@@ -9,4 +9,5 @@ services:
       - SERVICES=lambda,apigateway
       - DEBUG=1
     volumes:
-      - "./scripts:/docker-entrypoint-initaws.d"
+      - ./../.localstack/init:/docker-entrypoint-initaws.d
+      - ./tmp/demo_function.zip:/tmp/demo_function.zip
