@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application", "{50F94391-5F16-441B-8019-D8B0C3E977D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Lambda", "src\Demo.Lambda\src\Demo.Lambda\Demo.Lambda.csproj", "{5FB97398-7457-467A-A067-21172E47AB0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5FB97398-7457-467A-A067-21172E47AB0F} = {50F94391-5F16-441B-8019-D8B0C3E977D0}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FB97398-7457-467A-A067-21172E47AB0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB97398-7457-467A-A067-21172E47AB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB97398-7457-467A-A067-21172E47AB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB97398-7457-467A-A067-21172E47AB0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
