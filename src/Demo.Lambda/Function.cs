@@ -7,14 +7,12 @@ namespace Demo.Lambda;
 
 public class Function
 {
-    /// <summary>
-    /// A simple function that takes a string and does a ToUpper
-    /// </summary>
-    /// <param name="input"></param>
-    /// <param name="context"></param>
-    /// <returns></returns>
-    public string FunctionHandler(string input, ILambdaContext context)
+    public APIGatewayProxyResponse FunctionHandler(HealthData input, ILambdaContext context)
     {
-        return input.ToUpper();
+        return new APIGatewayProxyResponse(200, "Success", input);
     }
 }
+
+public record HealthData(string PatientName, int HeartRate, float Temperature);
+
+public record APIGatewayProxyResponse(int StatusCode, string Message, HealthData Data);

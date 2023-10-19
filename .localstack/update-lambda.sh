@@ -5,7 +5,7 @@ set -e
 framework="net6.0"
 
 echo "Publishing lambda..."
-dotnet publish ./../src/Demo.Lambda/ -f $framework &> /dev/null
+dotnet publish ./../src/Demo.Lambda/ -f $framework 
 echo "Publishing lambda done!"
 
 echo "Packaging lambda function..."
@@ -15,7 +15,7 @@ echo "Packaging lambda function done!"
 echo "Updating Lambda function..."
 
 aws --endpoint-url=http://localhost:4566 lambda update-function-code \
-    --function-name demo-lambda \
+    --function-name LambdaDemo \
     --zip-file fileb://../.docker/tmp/demo_function.zip #&> /dev/null
 
 echo "Lambda function updated!"
