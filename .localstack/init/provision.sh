@@ -26,6 +26,7 @@ aws $endpoint lambda create-function \
   --timeout 10 \
   --role LambdaDemoRole \
   --region eu-west-1 \
+  --environment Variables="{ASPNETCORE_ENVIRONMENT=Local}" \
   --handler Demo.Lambda::Demo.Lambda.Function::FunctionHandler \
   --zip-file fileb:///tmp/demo_function.zip \
   --role local-role #&> /dev/null

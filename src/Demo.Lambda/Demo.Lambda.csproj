@@ -12,5 +12,17 @@
         <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="2.6.0" />
         <PackageReference Include="Amazon.Lambda.Core" Version="2.1.0" />
         <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.3.0" />
+        <PackageReference Include="Confluent.Kafka" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="appsettings.Local.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 </Project>
