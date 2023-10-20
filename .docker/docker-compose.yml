@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  localstack:
+    image: localstack/localstack-full:1.4
+    container_name: "localstack-main"
+    hostname: "localstack-main"
+    ports:
+      - "4566:4566"
+    environment:
+      LAMBDA_EXECUTOR: docker-reuse
+      DOCKER_HOST: unix:///var/run/docker.sock
+      LAMBDA_DOCKER_NETWORK: docker_default
+      LAMBDA_REMOTE_DOCKER: "TRUE"
+      LAMBDA_NET_SERIALIZER_DEBUG: "true"
+      HOST_TMP_FOLDER: /tmp/localstack
+      PERSISTENCE: 1
+      LS_LOG: info
+    volumes:
+      - localstack:/var/lib/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./../.localstack/init:/docker-entrypoint-initaws.d
+      - ./tmp/demo_function.zip:/tmp/demo_function.zip
+        
+volumes:
+  localstack:

@@ -2,7 +2,7 @@
 
 set -e
 
-framework="net6.0"
+framework="net6.0"   # change to "net6.0" for .NET 6.0 version once supported by Localstack
 
 echo "Publishing lambda..."
 dotnet publish ./../src/Demo.Lambda/ -f $framework &> /dev/null
@@ -12,11 +12,10 @@ echo "Packaging lambda function..."
 7z a -tzip ./../.docker/tmp/demo_function.zip ./../src/Demo.Lambda/bin/Debug/$framework/publish/* &> /dev/null
 echo "Packaging lambda function done!"
 
-echo "Updating Lambda function..."
-
-aws --endpoint-url=http://localhost:4566 lambda update-function-code \
-    --function-name LambdaDemo \
-    --region eu-west-1 \
-    --zip-file fileb://../.docker/tmp/demo_function.zip #&> /dev/null
-
-echo "Lambda function updated!"
+echo "Starting Localstack ..."
+docker-compose \
+    -f ./../.docker/docker-compose.yml \
+    rm -svf
+docker-compose \
+    -f ./../.docker/docker-compose.yml \
+    up --abort-on-container-exit --timeout 20  --remove-orphans

@@ -1,3 +1,5 @@
+using System.Text.Json;
+using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
@@ -7,12 +9,26 @@ namespace Demo.Lambda;
 
 public class Function
 {
-    public APIGatewayProxyResponse FunctionHandler(HealthData input, ILambdaContext context)
+    public APIGatewayProxyResponse FunctionHandler(APIGatewayProxyRequest request, ILambdaContext context)
     {
-        return new APIGatewayProxyResponse(200, "Success", input);
+        // Deserialize the body from the input
+        var inputData = JsonSerializer.Deserialize<HealthData>(request.Body);
+
+        // Create the response object
+        var responseBody = new
+        {
+            Message = "Success",
+            Data = inputData
+        };
+
+        return new APIGatewayProxyResponse
+        {
+            StatusCode = 200,
+            Body = JsonSerializer.Serialize(responseBody),
+            Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
+        };
     }
 }
 
 public record HealthData(string PatientName, int HeartRate, float Temperature);
 
-public record APIGatewayProxyResponse(int StatusCode, string Message, HealthData Data);

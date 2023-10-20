@@ -8,9 +8,10 @@
   "profile": "",
   "region": "",
   "configuration": "Release",
+  "framework": "net6.0",
   "function-architecture": "x86_64",
   "function-runtime": "dotnet6",
   "function-memory-size": 256,
   "function-timeout": 30,
-  "function-handler": "Demo.Lambda.Function::FunctionHandler"
+  "function-handler": "Demo.Lambda::Demo.Lambda.Function::FunctionHandler"
 }
