@@ -4,6 +4,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Lambda", "src\Demo.Lambda\Demo.Lambda.csproj", "{B17A324C-B6CA-49BE-83E8-EA951D086A92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Blazor", "src\Demo.Blazor\Demo.Blazor.csproj", "{FE1E673F-054A-47AD-A897-1FAA59FC3CDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -11,11 +13,16 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B17A324C-B6CA-49BE-83E8-EA951D086A92} = {50F94391-5F16-441B-8019-D8B0C3E977D0}
+		{FE1E673F-054A-47AD-A897-1FAA59FC3CDB} = {50F94391-5F16-441B-8019-D8B0C3E977D0}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B17A324C-B6CA-49BE-83E8-EA951D086A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B17A324C-B6CA-49BE-83E8-EA951D086A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B17A324C-B6CA-49BE-83E8-EA951D086A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B17A324C-B6CA-49BE-83E8-EA951D086A92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE1E673F-054A-47AD-A897-1FAA59FC3CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE1E673F-054A-47AD-A897-1FAA59FC3CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE1E673F-054A-47AD-A897-1FAA59FC3CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE1E673F-054A-47AD-A897-1FAA59FC3CDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
