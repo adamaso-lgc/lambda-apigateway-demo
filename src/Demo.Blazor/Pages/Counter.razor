@@ -50,8 +50,11 @@
 
     private void UpdateHealthData(HealthData healthData)
     {
-        _healthDataList.Add(healthData);
-        StateHasChanged(); 
+        InvokeAsync(() =>
+        {
+            _healthDataList.Add(healthData);
+            StateHasChanged(); 
+        });
     }
 
     private async Task ToggleStream()
@@ -64,11 +67,26 @@
         }
         else
         {
+            _streamStatus = "Stopping...";
+            StateHasChanged();
+
             _cts?.Cancel();
-            HealthDataService.StopConsuming();
+
+            await WaitForConsumerToStop();
+            
+            _healthDataList.Clear();
+
             _streamStatus = "Start";
+            StateHasChanged();
         }
-        StateHasChanged(); 
+    }
+
+    private async Task WaitForConsumerToStop()
+    {
+        while (HealthDataService.IsConsuming)
+        {
+            await Task.Delay(100);
+        }
     }
 
     public void Dispose()
