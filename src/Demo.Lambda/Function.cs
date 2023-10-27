@@ -12,13 +12,13 @@ namespace Demo.Lambda;
 
 public class Function
 {
-    private static readonly IServiceProvider ServiceProvider;
-    private static string _topic;
+    private readonly IServiceProvider _serviceProvider;
+    private static string? _topic;
 
-    static Function()
+    public Function()
     {
         var configuration = BuildConfiguration();
-        ServiceProvider = ConfigureServices(configuration).BuildServiceProvider();
+        _serviceProvider = ConfigureServices(configuration).BuildServiceProvider();
     }
 
     public APIGatewayProxyResponse FunctionHandler(APIGatewayProxyRequest request, ILambdaContext context)
@@ -68,11 +68,11 @@ public class Function
         return services;
     }
     
-    private static void SendMessageToKafka(HealthData? data, ILambdaContext context)
+    private void SendMessageToKafka(HealthData? data, ILambdaContext context)
     {
         context.Logger.LogLine($"Topic: {_topic}");
         
-        var kafkaProducer = ServiceProvider.GetRequiredService<IProducer<Null, string>>();
+        var kafkaProducer = _serviceProvider.GetRequiredService<IProducer<Null, string>>();
         
         kafkaProducer.Produce(_topic, new Message<Null, string> { Value = JsonSerializer.Serialize(data) });
         kafkaProducer.Flush();
