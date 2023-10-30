@@ -7,24 +7,12 @@ I
 src/Demo.Lambda/Readme.md,0\5\053c0fd006fdf2c6b4b48b54c6d62ef431874add
 Y
 )src/Demo.Blazor/Shared/SurveyPrompt.razor,d\f\df95834c2b61c80ee2de453edd3b21c3664b1100
-W
-'src/Demo.Blazor/Shared/MainLayout.razor,8\a\8ab22b30ca0940fcca8c26cd5d626095710d0369
 [
 +src/Demo.Blazor/Shared/MainLayout.razor.css,3\8\3866a5e3927f6014c5ab25c3499a190d7610b15b
-T
-$src/Demo.Blazor/Pages/_Layout.cshtml,2\d\2dd6ae3d4e06be05693f9e4b9e23736d8178384a
 R
 "src/Demo.Blazor/Pages/Error.cshtml,4\b\4be1beecb0a803abcd8e208fb722b39d84b3c8ca
 U
-%src/Demo.Blazor/Pages/FetchData.razor,d\d\dd658ba736b856a9463347f9549cf68b47b4473a
-T
-$src/Demo.Blazor/Shared/NavMenu.razor,2\e\2e7b6a3eadaed5740e4a3572082963d12bfec12f
-U
 %src/Demo.Blazor/Pages/Error.cshtml.cs,2\0\2004426c7d156804abad8600d0300346802cda4b
-Q
-!src/Demo.Blazor/Pages/Index.razor,3\9\39399064b9346a29859c271a71b6ce26c3b890a7
-R
-"src/Demo.Blazor/Pages/_Host.cshtml,6\d\6d4e93ed58f7a6ea41f100088db92f41356bb59f
 ^
 .src/Demo.Blazor/Data/WeatherForecastService.cs,6\5\65aafe29d8c5a3a8dac7159cfe08ddfb617ebe2e
 T
@@ -37,8 +25,6 @@ a
 1src/Demo.Blazor/wwwroot/css/open-iconic/README.md,4\8\48dbf9649247392671d097a674f90e9150ed637d
 >
 LambdaDemo.sln,f\7\f745e39be0bd00120675d9d54357b75c51b01b9a
-J
-src/Demo.Blazor/Program.cs,b\5\b50c3c82b29cba6978b281618a2e74e7c0dc0346
 ~
 Nsrc/Demo.Blazor/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css,f\4\f40435968ecf8db9d016390ae62e63034ee489c4
 k
@@ -61,3 +47,7 @@ N
 src/Demo.Blazor/_Imports.razor,d\8\d81b57290d51349e6669446ede7c773782752e73
 R
 "src/Demo.Blazor/Demo.Blazor.csproj,5\8\5811e62e50fba0c8af46b8b77c17b7ec3b4f7bf3
+V
+&src/Demo.Lambda/appsettings.Local.json,5\2\5237a669463e249fe6888b2155c044fce2c73c08
+P
+ src/Demo.Lambda/appsettings.json,7\4\742f1549e4c70921116a980230d67242cb6da3a7

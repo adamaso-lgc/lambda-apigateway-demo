@@ -1,0 +1,97 @@
+@page "/health"
+@using Demo.Blazor.Data
+@using Demo.Lambda
+@inject IHealthDataService HealthDataService
+@inject ILogger<Counter> Logger
+
+
+<PageTitle>Health Data Stream</PageTitle>
+
+<h1>Health Data Stream</h1>
+
+<p role="status">Received health data count: @_healthDataList.Count</p>
+
+<button class="btn btn-primary" @onclick="ToggleStream">
+    @_streamStatus Stream
+</button>
+
+@if (_healthDataList.Count > 0)
+{
+    <table class="table mt-4">
+        <thead>
+        <tr>
+            <th>Patient Name</th>
+            <th>Heart Rate</th>
+            <th>Temperature</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var healthData in _healthDataList)
+        {
+            <tr>
+                <td>@healthData.PatientName</td>
+                <td>@healthData.HeartRate</td>
+                <td>@healthData.Temperature</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private readonly List<HealthData> _healthDataList = new();
+    private string _streamStatus = "Start";
+    private CancellationTokenSource? _cts;
+
+    protected override void OnInitialized()
+    {
+        HealthDataService.OnNewHealthDataReceived += UpdateHealthData;
+    }
+
+    private void UpdateHealthData(HealthData healthData)
+    {
+        InvokeAsync(() =>
+        {
+            _healthDataList.Add(healthData);
+            StateHasChanged(); 
+        });
+    }
+
+    private async Task ToggleStream()
+    {
+        if (_streamStatus == "Start")
+        {
+            _cts = new CancellationTokenSource();
+            _streamStatus = "Stop";
+            await HealthDataService.StartConsuming(_cts.Token);
+        }
+        else
+        {
+            _streamStatus = "Stopping...";
+            StateHasChanged();
+
+            _cts?.Cancel();
+
+            await WaitForConsumerToStop();
+            
+            _healthDataList.Clear();
+
+            _streamStatus = "Start";
+            StateHasChanged();
+        }
+    }
+
+    private async Task WaitForConsumerToStop()
+    {
+        while (HealthDataService.IsConsuming)
+        {
+            await Task.Delay(100);
+        }
+    }
+
+    public void Dispose()
+    {
+        HealthDataService.OnNewHealthDataReceived -= UpdateHealthData;
+        _cts?.Cancel();
+    }
+}
